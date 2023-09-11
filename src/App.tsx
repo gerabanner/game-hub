@@ -1,15 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import React from 'react'
-import { Button } from '@chakra-ui/react'
+import { Grid, GridItem, Show } from '@chakra-ui/react'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <React.Fragment>
-      <Button colorScheme='purple'>CLICK</Button>
+      <Grid templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"` // 1024px
+      }}>
+      <GridItem area={'nav'} bg={'coral'}>NAV</GridItem>
+      <Show above='lg'>
+      <GridItem area={'aside'} bg={'gold'}>aside</GridItem>
+      </Show>
+      <GridItem area={'main'} bg={'dodgerblue'}>main</GridItem>
+      </Grid>
     </React.Fragment>
   )
 }
