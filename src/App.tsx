@@ -2,7 +2,7 @@ import './App.css'
 import React from 'react'
 import { Grid, GridItem, Show } from '@chakra-ui/react'
 import NavBar from './components/navBar/NavBar'
-import GameGrid from './components/gameGrid/GameGrid'
+import GameGrid from './components/game/GameGrid'
 
 function App() {
 
