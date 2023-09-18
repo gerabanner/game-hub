@@ -1,10 +1,10 @@
 import { HStack, List, ListItem, Text } from "@chakra-ui/react";
-import { useGenres } from "../../hooks/genres/useGenres"
 import React from "react";
+import useGenres from "../../hooks/useGenres";
 
 const GenreList = () => {
 
-    const { genres, isLoading, error } = useGenres();
+    const { data, isLoading, error } = useGenres();
 
     return (
         <React.Fragment>
@@ -12,7 +12,7 @@ const GenreList = () => {
             {isLoading && <Text>Loading...</Text>}
             <HStack>
                 <List>
-                    {genres.map(genre => <ListItem>{genre.name}</ListItem>)}
+                    {data.map(genre => <ListItem>{genre.name}</ListItem>)}
                 </List>
             </HStack>
         </React.Fragment>
