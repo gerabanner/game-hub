@@ -1,4 +1,5 @@
 export type GameQuery = {
     genre: Genre | null,
-    platform: Platform | null
+    platform: Platform | null,
+    sortOrder: string
   }

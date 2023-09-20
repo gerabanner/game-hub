@@ -10,7 +10,8 @@ const useGames = (
     {
       params: {
         genres: gameQuery.genre?.id,
-        plaforms: gameQuery.platform?.id
+        plaforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder
       },
     },
     [gameQuery]
