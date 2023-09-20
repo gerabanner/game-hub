@@ -1,21 +1,19 @@
+import { GameQuery } from "../types/games/GameQuery.module";
 import { Game } from "../types/games/Game.module";
-import { Genre } from "../types/genres/Genre.module";
-import { Platform } from "../types/platforms/Platforms.module";
 import useData from "./useData";
 
 const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  gameQuery: GameQuery
 ) => {
   return useData<Game>(
     "games",
     {
       params: {
-        genres: selectedGenre?.id,
-        plaforms: selectedPlatform?.id
+        genres: gameQuery.genre?.id,
+        plaforms: gameQuery.platform?.id
       },
     },
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
   );
 };
 
