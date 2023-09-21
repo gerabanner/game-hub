@@ -1,12 +1,13 @@
 import './App.css'
 import React, { useState } from 'react'
-import { Grid, GridItem, HStack, Show } from '@chakra-ui/react'
+import { Box, Grid, GridItem, HStack, Show } from '@chakra-ui/react'
 import NavBar from './components/navBar/NavBar'
 import GameGrid from './components/game/GameGrid'
 import GenreList from './components/genres/GenreList'
 import PlatformSelector from './components/game/platform/PlatformSelector'
 import { GameQuery } from './types/games/GameQuery.module'
 import { SortSelector } from './components/game/sort/SortSelector'
+import GameHeading from './components/game/GameHeading'
 
 type Props = {
   onSearch: (searchText: string) => void;
@@ -28,7 +29,7 @@ function App() {
         }}
       >
         <GridItem area={'nav'}>
-          <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})} />
+          <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
         </GridItem>
         <Show above='lg'>
           <GridItem area={'aside'} paddingX={5}>
@@ -36,10 +37,13 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area={'main'}>
-          <HStack spacing={5} paddingLeft={10} marginBottom={5}>
-            <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })} />
-            <SortSelector  sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})} />
-          </HStack>
+          <Box paddingLeft={10}>
+            <GameHeading gameQuery={gameQuery} />
+            <HStack spacing={5} marginBottom={5}>
+              <PlatformSelector selectedPlatform={gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })} />
+              <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })} />
+            </HStack>
+          </Box>
           <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
