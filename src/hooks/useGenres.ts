@@ -1,8 +1,7 @@
-import { Genre } from "../types/genres/Genre.module";
-import useData from "./useData"
+import Genres from "../data/Genres";
 
 const useGenres = () => {
-    return useData<Genre>('genres');
-}
+  return { data: Genres, isLoading: false, error: null };
+};
 
 export default useGenres;
