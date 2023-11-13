@@ -11,17 +11,17 @@ type Props = {
 
 const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
 
-    const { data, isLoading, error } = useGenres();
+    const { data: genres, isLoading, error } = useGenres();
 
     if (error) return null;
     if (isLoading) return <Spinner />;
-
+    
     return (
         <React.Fragment>
             <Heading fontSize={'xl'} marginBottom={3}>Genres</Heading>
             <HStack>
                 <List>
-                    {data.map(genre =>
+                    {genres.results?.map((genre: any) =>
                         <ListItem key={genre.id} paddingY={'5px'}>
                             <HStack>
                                 <Image boxSize={'32px'} borderRadius={8} src={getCroppedImageUrl(genre.image_background)} />
