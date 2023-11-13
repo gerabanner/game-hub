@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 import { FetchResponse } from "../types/genres/FetchResponse.module";
 import { Genre } from "../types/genres/Genre.module";
 
@@ -18,13 +18,13 @@ class APIClient<T> {
         this._endPoint = endPont
     }
 
-    getAll = (params: any) => {
+    getAll = (config: AxiosRequestConfig) => {
         // return axiosInstance.get<FetchResponse<Genre>[]>(this._endPoint, params && {params: params}).then((response: FetchResponse<Genre>) => response.data);
-        return axiosInstance.get<T[]>(this._endPoint, params && {params: params}).then((response: any) => response.data.results);
+        return axiosInstance.get<FetchResponse<T>>(this._endPoint, config).then((response) => response.data);
     }
 
-    getById = (id: string | number) =>{
-        return axiosInstance.get<T[]>(this._endPoint).then(response => response.data);
+    getById = (id: string | number) => {
+        return axiosInstance.get<T>(this._endPoint).then(response => response.data);
     }
 
     post = () => {
