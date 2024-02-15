@@ -1,5 +1,5 @@
 export interface FetchResponse<T> {
-    data: any;
+    next: string | null,
     count: number,
     results: T[]
 }
